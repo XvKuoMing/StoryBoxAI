@@ -1,0 +1,104 @@
+/* src/components/ScenarioSelection.css */
+
+.scenario-selection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px 20px;
+  background: url('/assets/box.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+}
+
+/* Top bar for settings button */
+.top-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: none;
+}
+
+.settings-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.settings-button:hover {
+  background-color: #0056b3;
+}
+
+.scenario-selection h2 {
+  margin-top: 60px;
+  font-size: 2.2rem;
+  margin-bottom: 30px;
+  text-shadow: 2px 2px 4px #000;
+}
+
+.scenario-selection ul {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  max-width: 600px;
+}
+
+.scenario-selection li {
+  background-color: rgba(0, 0, 0, 0.6);
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.scenario-selection li:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.scenario-selection li:active {
+  transform: scale(0.98);
+}
+
+.scenario-selection button {
+  margin-top: 30px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #ffc107;
+  color: #000;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.scenario-selection button:hover {
+  background-color: #e0a800;
+}
+
+.scenario-selection .regenerate-button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #ffc107;
+  color: #000;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.scenario-selection .regenerate-button:hover {
+  background-color: #e0a800;
+}
+
+  

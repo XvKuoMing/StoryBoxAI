@@ -1,0 +1,146 @@
+/* src/components/IntroForm.css */
+
+.intro-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background: url('/assets/box.png') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+}
+
+/* Adjust the form title to not overlap with the settings button */
+.intro-form h2 {
+  margin-top: 60px; /* Add margin to push it below the settings button */
+}
+
+.intro-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  max-width: 400px;
+}
+
+.intro-form input,
+.intro-form select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+}
+
+.intro-form input::placeholder {
+  color: #555;
+}
+
+.intro-form button {
+  width: 50%;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #28a745;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.intro-form button:hover {
+  background-color: #218838;
+}
+
+/* Top bar for settings button */
+.top-bar {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1000;
+  background: none; /* Remove any background */
+}
+
+/* Settings button styles */
+.settings-button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+  width: auto; /* Let the width adjust to content */
+  max-width: 120px; /* Set a reasonable maximum width */
+  text-align: center;
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+}
+
+.settings-button:hover {
+  background-color: #0056b3;
+}
+
+/* Settings modal styles */
+.settings-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.settings-content {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  color: #333;
+  width: 80%;
+  max-width: 500px;
+}
+
+.settings-content h3 {
+  margin-bottom: 20px;
+}
+
+
+.settings-content label {
+  display: block;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.settings-content input[type='checkbox'] {
+  margin-right: 10px;
+}
+
+.settings-content button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #dc3545;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.settings-content button:hover {
+  background-color: #c82333;
+}
+
+  
