@@ -50,7 +50,7 @@ function ScenarioSelection({ name, genre, onSelectScenario, settings, updateSett
       {showPopup && <Popup onClose={() => setShowPopup(false)} />}
       <div className="top-bar">
         <button className="settings-button" onClick={() => setShowSettings(true)}>
-          Settings
+          Настройки
         </button>
       </div>
       {showSettings && (

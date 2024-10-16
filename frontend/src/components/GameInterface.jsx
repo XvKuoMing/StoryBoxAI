@@ -122,7 +122,9 @@ function GameInterface({ name, genre, scenario, onExit, settings, updateSettings
 
       // Update stats if any
       if (serverStats) {
-        const statUpdate = JSON.parse(serverStats);
+        // console.log(serverStats)
+        // const statUpdate = JSON.parse(serverStats);
+        const statUpdate = serverStats
         setStats((prevStats) => {
           const operation = statUpdate.operation;
           const value = Number(statUpdate.value);
@@ -214,7 +216,7 @@ function GameInterface({ name, genre, scenario, onExit, settings, updateSettings
       )}
       <div className="top-bar">
         <button className="settings-button" onClick={() => setShowSettings(true)}>
-          Settings
+          Настройки
         </button>
         <div className="stats">
           <p>HP: {stats.HP}</p>
