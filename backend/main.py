@@ -18,6 +18,7 @@ async def get_scenarios(request):
 async def get_story(request):
     """stats and continues story """
     try:
+        print(request)
         data = await request.json()  # json data as {user: ..., name:, genre, scenario, history}
         gen = gen_story(
             name=data["name"],
@@ -32,7 +33,7 @@ async def get_story(request):
             reason='OK',
             headers={
                 'Content-Type': 'application/x-ndjson',
-                'Transfer-Encoding': 'chunked',  # Optional: Explicitly specify chunked encoding
+                'Transfer-Encoding': 'chunked',  # chunked encoding
             }
         )
 

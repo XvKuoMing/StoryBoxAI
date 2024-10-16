@@ -12,7 +12,7 @@ async def generate_stream(system: str,
     completion = await model.chat.completions.create(
         model=MODEL,
         temperature=temperature,
-        max_tokens=512,
+        max_tokens=1024,
         messages=[
             {"role": "system", "content": system},
             *history,

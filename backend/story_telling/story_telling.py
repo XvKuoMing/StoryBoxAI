@@ -1,7 +1,7 @@
 from story_telling.reqs import generate, generate_stream
 from typing import List, Dict
 import json
-
+import re
 
 
 get_scenarios_system: str 
@@ -50,33 +50,60 @@ async def gen_story(name: str,
     inside_stats_tag = False
     stats_json: str = ""
     buffer: str = ""
+    resulted_message = ""
     async for token in stream:
+        resulted_message += token
         # parse token for info
         # return a json: {token: token, stats: stats info, finish: finish info, sound_effect: sound_effect}
         for char in token:
             if char == " " or char == "\n":
-                if buffer == STATS:
+                if STATS in buffer:
+                    # print("opened stats")
                     inside_stats_tag = True
-                
-                if buffer in [WIN, LOST]:
-                    yield {"token": None, "stats": None, "finish": buffer}
-                
+                    buffer, stats_json = buffer.split(STATS) # take context from left
+                    
                 if inside_stats_tag:
-                    if buffer == NSTATS:
+                    if NSTATS in buffer:
+                        # print("closed nstats")
                         inside_stats_tag = False
-                        try:
-                            stats_json = json.loads(stats_json)
-                        except:
-                            stats_json = None
-                        yield {"token": None, "stats": stats_json, "finish": None}
-                    stats_json += buffer + char
-                    buffer = ""
-                else:
-                    yield {"token": buffer + char, "stats": stats_json, "finish": None} # yield everything before space of newline
-                    buffer = ""
-                    continue
+                        stats_json, buffer = buffer.split(NSTATS) # context from right
+                    else:
+                        # print('current buffer: ', buffer, "--end of buffer")
+                        buffer += char
+                        # print('++++')
+                        continue
+                
+                if WIN in buffer:
+                    yield {"token": buffer.replace(WIN, ""), "stats": None, "finish": WIN}
+                    break
+                
+                if LOST in buffer:
+                    yield {"token": buffer.replace(LOST, ""), "stats": None, "finish": LOST}
+                    break
+
+                
+                yield {"token": buffer + char, "stats": None, "finish": None} # yield everything before space of newline
+                buffer = ""
+                continue
 
             buffer += char
+    if inside_stats_tag  and NSTATS in buffer:
+        # print("closed")
+        stats_json, buffer = buffer.split(NSTATS) # context from right 
+    if buffer:
+        yield {"token": buffer, "stats": None, "finish": None}
+    
+    # print(resulted_message)
+    # print("===================json now==========")
+    # print(stats_json)
+    json_pat = re.compile('''\{.+?\}''')
+    for str_json in json_pat.finditer(stats_json):
+        #print('here')
+        # print(stats_json)
+        try:
+            yield {"token": "", "stats": json.loads(str_json.group()), "finish": None}
+        except:
+            pass
         
             
     
