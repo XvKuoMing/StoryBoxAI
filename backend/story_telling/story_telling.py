@@ -83,7 +83,11 @@ async def gen_story(name: str,
 
             buffer += char
     if inside_stats_tag  and NSTATS in buffer:
-        stats_json, buffer = buffer.split(NSTATS) # context from right 
+        stats_json, buffer = buffer.split(NSTATS) # context from right
+    if WIN in buffer:
+        yield {"token": buffer.replace(WIN, ""), "stats": None, "finish": WIN}
+    if LOST in buffer:
+        yield {"token": buffer.replace(LOST, ""), "stats": None, "finish": LOST}
     if buffer:
         yield {"token": buffer, "stats": None, "finish": None}
     
